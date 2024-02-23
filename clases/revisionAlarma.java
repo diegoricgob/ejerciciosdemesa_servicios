@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class revisionAlarma extends servicio {
     int numeroAlarmas;
 
-    public revisionAlarma(LocalDate localDate, String cliente, int numeroAlarmas) {
+    public revisionAlarma(String cliente, int numeroAlarmas) {
         super(cliente);
         this.numeroAlarmas = numeroAlarmas;
         this.trabajador= "Revisor Especialista Contraincendios";

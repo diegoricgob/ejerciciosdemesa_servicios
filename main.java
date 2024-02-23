@@ -1,44 +1,73 @@
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.time.LocalDate;
+import java.util.Scanner;
 
 import clases.revisionAlarma;
-import clases.servicio;
 import clases.trabajoPintura;
 
-public class main{
+public class main {
     public static void main(String[] args) {
-        // TODO code application logic here
+        Scanner sc = new Scanner(System.in);
+        int opcion = -1;
+        int tipoObra = -1;
+
+        try {
+
+            do {
+
+                // Try catch para evitar que el programa termine si hay un error
+
+                // OBJETO
+                trabajoPintura trabajoPintura1 = new trabajoPintura("Juan", LocalDate.now(), "Ana", 100, 10);
+                revisionAlarma revisionAlarma1= new revisionAlarma("Ana", 10);
+
+                System.out.println("Elige el tipo de obra:" +
+                        "\n1. Pintura" +
+                        "\n2- Alarma" +
+                        "\n0.- Salir");
+                tipoObra = opcion = sc.nextInt();
+
+                System.out.println("MENU DE OPCIONES:" +
+                        "\n1. Coste total" +
+                        "\n2- Detalle de la obra" +
+                        "\n0.- Salir");
+
+                System.out.print("Enter la opcion elegida: ");
+
+                opcion = sc.nextInt();
+
+                // Ejemplo de switch case en Java
+                switch (opcion) {
+
+                    case 1: //coste total
+                        if(tipoObra==1){
+                            System.out.println("El precio de la obra es: " +trabajoPintura1.costeTotal());
+                        }else{
+                            
+                            System.out.println("El precio de la obra es: " +revisionAlarma1.costeTotal());
+                        }
+                    break;
+
+                    case 2: //factura
         
-        //Servicio servi = new Servicio("Pepe",LocalDate.of(2022, 8, 15),"Zapatos García");
-        
-        trabajoPintura tp1 = new trabajoPintura("Antonio",LocalDate.of(2022,9,10), "Seguros Martínez", 20,4);
-        //System.out.println(tp1.detalleServicio());
-        
-        revisionAlarma ra1 = new revisionAlarma(LocalDate.of(2022,8,6),"Colegio Santa Maria",34);
-        //System.out.println(ra1.detalleServicio());
-        
-        trabajoPintura tp2 = new trabajoPintura("Ana",LocalDate.of(2022,8,8),"Fruteria La Pera", 10, 3);
-        trabajoPintura tp3 = new trabajoPintura("Juan",LocalDate.of(2022,9,30),"Restaurante El Boqueron", 200,2.5);
-        revisionAlarma ra2 = new revisionAlarma(LocalDate.of(2022,10,1),"Hotel Las Palmeras",70);
-        
-        ArrayList<servicio> trabajos = new ArrayList<>();
-        trabajos.add(tp1);
-        trabajos.add(ra1);
-        trabajos.add(tp2);
-        trabajos.add(tp3);
-        trabajos.add(ra2);
-        
-        double ct = 0;
-        double cmo = 0;
-        
-        for(servicio t: trabajos) {
-            ct += t.costeTotal();
-            cmo += t.costeManoObra();
-            
-            System.out.println(t.detalleServicio()+"\n\n");
-        }
-        System.out.println("Coste total de todos los trabajos: "+ct);
-        System.out.println("Coste total de mano de obra: "+cmo);
+                    System.out.println("El precio de la obra es: " +trabajoPintura1.detalleServicio());
+                    break;
+
+                    case 0:
+                        System.out.println("Adios!");
+                        break;
+                    default:
+                        System.out.println("Número no reconocido");
+                        break;
+                }// switch
+
+                System.out.println("\n"); // Mostrar un salto de línea en Java
+
+            } while (opcion != 0);// while
+            System.out.println("Hasta pronto");
+        } // try
+        catch (Exception e) {
+            System.out.println("Uoop! Error!");
+        } // catch
+
     }
 }
